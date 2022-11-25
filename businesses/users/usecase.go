@@ -67,13 +67,13 @@ func (u *userUsecase) RequestOtp(ctx context.Context, request *Domain) error {
 	to := user.Email
 	subject := "Login Akun Profcouse"
 	message := "" +
-		"<img src=\"https://firebasestorage.googleapis.com/v0/b/crudfirebase-91413.appspot.com/o/logo.png?alt=media&token=4fa0b90f-6b13-41f3-96a3-53e277ff4d5c\" alt=\"Logo Prof Course\" width=\"75\">" +
+		"<img src=\"\" alt=\"Logo Eduworld Course\" width=\"75\">" +
 		"<p>Dear " + user.Name + "</p><br><p> Berikut ini adalah OTP Anda : " + otp + " " + "" +
 		"<p>Anda harus menjaga informasi anda</p>" +
 		"<br>" +
 		"<p>Terima kasih</p>" +
 		"<br>" +
-		"Prof Course"
+		"Eduworld Course"
 
 	//send email
 	go u.mailRepo.SendEmail(ctx, to, subject, message)
