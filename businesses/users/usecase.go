@@ -57,7 +57,7 @@ func (u *userUsecase) RequestOtp(ctx context.Context, request *Domain) error {
 		return err
 	}
 
-	otp := utils.RandNumeric()
+	otp := utils.RandNumeric(6)
 	cacheKey := "otp:" + user.Email
 	err = u.redisRepo.Set(ctx, cacheKey, otp)
 	if err != nil {
@@ -65,7 +65,7 @@ func (u *userUsecase) RequestOtp(ctx context.Context, request *Domain) error {
 	}
 
 	to := user.Email
-	subject := "Login Akun Profcouse"
+	subject := "Login Akun Eduworld Course"
 	message := "" +
 		"<img src=\"\" alt=\"Logo Eduworld Course\" width=\"75\">" +
 		"<p>Dear " + user.Name + "</p><br><p> Berikut ini adalah OTP Anda : " + otp + " " + "" +

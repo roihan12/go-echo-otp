@@ -1,14 +1,21 @@
 package utils
 
+import "math/rand"
+
 type UserOtp struct {
 	Otp string `json:"otp"`
 }
 
-const (
-	Numeric = "0123456789"
-)
+func RandNumeric(n int) string {
 
-func RandNumeric() string {
 	// TODO: Generate Random string
-	return "65789"
+
+	var numeric = []rune("01234567899")
+
+	s := make([]rune, n)
+	for i := range s {
+		s[i] = numeric[rand.Intn(len(numeric))]
+	}
+	return string(s)
+
 }

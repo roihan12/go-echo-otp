@@ -3,6 +3,7 @@ package users
 import (
 	"go-echo-otp/businesses/users"
 	"go-echo-otp/controllers/users/request"
+	"go-echo-otp/controllers/users/response"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -73,5 +74,9 @@ func (p *UserDelivery) RegisterHandler(c echo.Context) error {
 		return err
 	}
 
-	return c.JSON(http.StatusOK, UserList)
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":   http.StatusOK,
+		"status": "success",
+		"data":   response.FromDomain(UserList),
+	})
 }
